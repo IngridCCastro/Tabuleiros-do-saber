@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fundo e Texturas */
+  --color-pergaminho-claro: #F9F5EC;
+  --color-pergaminho-medio: #E8DFC6;
+  --color-pergaminho-escuro: #A08F7E;
+  
+  /* Destaques e Elementos de Jogo */
+  --color-terroso-quente: #D97D3C;
+  --color-madeira-clara: #B37F46;
+  --color-madeira-escura: #8A563C;
+  
+  /* Verdes (Natureza/Contraste) */
+  --color-verde-natural: #6B8E23;
+  --color-verde-ativo: #4B6F44;
+  --color-verde-escuro: #324330;
+  
+  /* Textos e Neutros */
+  --color-texto-principal: #5C4033;
+  --color-neutro: #696C61;
+  --color-destaque-claro: #FFFDF9;
+}
+
+html.dark {
+  --color-pergaminho-claro: #0f172a; /* Fundo principal escuro (Slate 900) */
+  --color-pergaminho-medio: #1e293b; /* Fundos secundários (Slate 800) */
+  --color-pergaminho-escuro: #334155; /* Bordas (Slate 700) */
+  --color-texto-principal: #e2e8f0; /* Texto base mais claro */
+  
+  /* As cores de destaque (madeira, verde, terroso) mantêm-se iguais para 
+     preservar a identidade do projeto, mesmo no fundo escuro! */
+}
+
+/* body {
+  background-color: var(--color-pergaminho-claro);
+  color: var(--color-texto-principal);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+} */
+
+body {
+  background-color: var(--color-pergaminho-claro);
+  color: var(--color-texto-principal);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================
+   Estilização da Barra de Rolagem (Scrollbar)
+   ========================================== */
+
+/* Suporte para Firefox */
+* {
+  scrollbar-width: thin; /* Deixa a barra mais fina */
+  scrollbar-color: var(--color-madeira-escura) var(--color-pergaminho-claro);
+}
+
+/* Suporte para Chrome, Edge, Safari e Opera */
+*::-webkit-scrollbar {
+  width: 10px; /* Largura da barra vertical */
+  height: 10px; /* Altura da barra horizontal, se existir */
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-pergaminho-claro); /* Fundo mais claro */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-madeira-escura); /* Barra mais escura */
+  border-radius: 8px; /* Bordas arredondadas */
+  /* Cria um espaço entre a barra e a borda da tela */
+  border: 2px solid var(--color-pergaminho-claro); 
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-terroso-quente); /* Cor ao passar o mouse */
+}
