@@ -1,11 +1,13 @@
-import Hero from '../sections/Cascavel/Hero.jsx';
-import Details from '../sections/Cascavel/Details.jsx';
+import Hero from '../sections/Cascavel/Hero'
+import Details from '../sections/Cascavel/Details'
 
-export default function PassagemDasPedras() {
+function ALendaDaCascavel() {
   return (
-    <>
+    <main className="game-page">
       <Hero />
       <Details />
-    </>
-  );
+    </main>
+  )
 }
+
+export default ALendaDaCascavel

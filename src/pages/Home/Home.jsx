@@ -1,34 +1,44 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+/*
+  =======================================================
+  IMAGENS DOS JOGOS
+  =======================================================
 
-import PassagemDasPedras from './pages/PassagemDasPedras'
-import GuardioesDaMemoria from './pages/GuardioesDaMemoria'
-import ALendaDaCascavel from './pages/ALendaDaCascavel'
+  Você só precisa trocar estes três arquivos.
 
-import imagemItaicaba from './assets/Itaicaba/itaicaba_home.jpeg'
-import imagemAracati from './assets/Aracati/aracati_home.png'
-import imagemCascavel from './assets/Cascavel/cascavel_home.jpeg'
+  ITAIÇABA:
+  src/assets/Itaicaba/Caixa_fechada.jpeg
+
+  ARACATI:
+  src/assets/Aracati/Aracati_home.png
+
+  CASCAVEL:
+  src/assets/Cascavel/Cascavel_home.jpeg
+*/
+
+import imagemItaicaba
+  from '../../assets/Itaicaba/Caixa_fechada.jpeg'
+
+import imagemAracati
+  from '../../assets/Aracati/Aracati_home.png'
+
+import imagemCascavel
+  from '../../assets/Cascavel/cascavel_home.jpeg'
 
 
 function Home() {
+
   const jogos = [
     {
       cidade: 'Itaiçaba',
       titulo: 'Passagem das Pedras',
       subtitulo: 'Crise na Vila',
       descricao:
-        'Uma experiência inspirada na história, nos desafios e na identidade cultural do município de Itaiçaba.',
+        'Um jogo cooperativo inspirado na história, nos desafios e na identidade cultural de Itaiçaba.',
       rota: '/PassagemDasPedras',
       imagem: imagemItaicaba,
       numero: '01',
-      classe: 'card-itaicaba',
     },
 
     {
@@ -36,44 +46,52 @@ function Home() {
       titulo: 'Guardiões da Memória',
       subtitulo: 'História, patrimônio e cultura',
       descricao:
-        'Uma experiência que transforma referências históricas e culturais de Aracati em narrativa, interação e aprendizagem.',
+        'Uma experiência lúdica construída a partir da memória, do patrimônio e dos símbolos históricos de Aracati.',
       rota: '/GuardioesDaMemoria',
       imagem: imagemAracati,
       numero: '02',
-      classe: 'card-aracati',
     },
 
     {
       cidade: 'Cascavel',
       titulo: 'A Lenda da Cascavel',
-      subtitulo: 'Folclore, memória e território',
+      subtitulo: 'Folclore, território e memória',
       descricao:
-        'Um jogo que incorpora narrativas populares, território e referências culturais do município de Cascavel.',
+        'Um jogo estratégico que transforma referências culturais e territoriais de Cascavel em experiência lúdica.',
       rota: '/ALendaDaCascavel',
       imagem: imagemCascavel,
       numero: '03',
-      classe: 'card-cascavel',
     },
   ]
+
 
   return (
     <main className="home">
 
-      {/* HERO */}
-      <section className="home-hero">
+      {/* =================================================
+          HERO
+      ================================================= */}
 
-        <span className="hero-badge">
+      <section
+        id="home"
+        className="home-hero"
+      >
+
+        <div className="hero-badge">
           Projeto de extensão • IFCE
-        </span>
+        </div>
 
         <h1>
           Histórias do Ceará
-          <span>transformadas em jogos.</span>
+          <span>
+            transformadas em jogos.
+          </span>
         </h1>
 
         <p>
-          Cultura, memória e território reunidos em experiências
-          de mesa inspiradas nas histórias dos municípios cearenses.
+          Cultura, memória e território se encontram
+          em jogos de tabuleiro desenvolvidos a partir
+          das histórias dos municípios cearenses.
         </p>
 
         <div className="hero-actions">
@@ -83,7 +101,10 @@ function Home() {
             className="primary-button"
           >
             Conheça os jogos
-            <span>↓</span>
+
+            <span>
+              ↓
+            </span>
           </a>
 
           <a
@@ -95,21 +116,30 @@ function Home() {
 
         </div>
 
-        <div className="hero-stats">
+        <div className="hero-bottom">
 
           <div>
             <strong>03</strong>
-            <span>jogos</span>
+
+            <span>
+              jogos apresentados
+            </span>
           </div>
 
           <div>
             <strong>03</strong>
-            <span>municípios</span>
+
+            <span>
+              municípios cearenses
+            </span>
           </div>
 
           <div>
-            <strong>CE</strong>
-            <span>território</span>
+            <strong>01</strong>
+
+            <span>
+              território conectado
+            </span>
           </div>
 
         </div>
@@ -117,7 +147,10 @@ function Home() {
       </section>
 
 
-      {/* JOGOS */}
+      {/* =================================================
+          JOGOS
+      ================================================= */}
+
       <section
         id="jogos"
         className="games-section"
@@ -126,23 +159,20 @@ function Home() {
         <div className="section-header">
 
           <div>
-
             <span className="section-eyebrow">
               NOSSOS JOGOS
             </span>
 
             <h2>
-              Conheça cada
-              <br />
-              território.
+              Conheça cada território
             </h2>
-
           </div>
 
           <p>
-            Cada proposta nasce de pesquisas sobre história,
-            cultura, memória e território, transformadas em
-            narrativas e experiências de mesa.
+            Cada jogo nasce de pesquisas,
+            referências locais e elementos culturais
+            transformados em mecânicas, narrativas
+            e experiências de mesa.
           </p>
 
         </div>
@@ -154,12 +184,15 @@ function Home() {
 
             <Link
               to={jogo.rota}
-              className={`game-card ${jogo.classe}`}
-              key={jogo.titulo}
+              key={jogo.cidade}
+              className="game-card"
             >
+
+              {/* IMAGEM */}
 
               <div className="game-image-wrapper">
 
+                {/* fundo desfocado */}
                 <img
                   src={jogo.imagem}
                   alt=""
@@ -167,9 +200,10 @@ function Home() {
                   className="game-image-background"
                 />
 
+                {/* imagem completa */}
                 <img
                   src={jogo.imagem}
-                  alt={`Imagem do jogo ${jogo.titulo}`}
+                  alt={`Imagem de ${jogo.titulo}`}
                   className="game-image"
                 />
 
@@ -179,6 +213,8 @@ function Home() {
 
               </div>
 
+
+              {/* TEXTO */}
 
               <div className="game-card-content">
 
@@ -200,7 +236,10 @@ function Home() {
 
                 <span className="game-link">
                   Explorar jogo
-                  <strong>→</strong>
+
+                  <strong>
+                    →
+                  </strong>
                 </span>
 
               </div>
@@ -214,15 +253,18 @@ function Home() {
       </section>
 
 
-      {/* PROJETO */}
+      {/* =================================================
+          PROJETO
+      ================================================= */}
+
       <section
         id="projeto"
         className="project-section"
       >
 
-        <span className="project-label">
+        <div className="project-label">
           SOBRE O PROJETO
-        </span>
+        </div>
 
 
         <div className="project-content">
@@ -237,15 +279,18 @@ function Home() {
           <div className="project-text">
 
             <p>
-              O <strong>Tabuleiros do Saber</strong> aproxima
-              educação, cultura e território por meio do
+              O <strong>Tabuleiros do Saber</strong>
+              é uma iniciativa que aproxima educação,
+              cultura e território por meio do
               desenvolvimento de jogos analógicos.
             </p>
 
             <p>
-              As propostas partem de pesquisas, memórias,
-              histórias, manifestações culturais e características
-              próprias dos municípios cearenses.
+              As propostas partem de pesquisas,
+              visitas, memórias, histórias,
+              manifestações culturais e características
+              próprias dos municípios do litoral
+              leste cearense.
             </p>
 
           </div>
@@ -256,7 +301,6 @@ function Home() {
         <div className="project-steps">
 
           <article>
-
             <span>01</span>
 
             <h3>
@@ -267,12 +311,10 @@ function Home() {
               Levantamento histórico,
               cultural e territorial.
             </p>
-
           </article>
 
 
           <article>
-
             <span>02</span>
 
             <h3>
@@ -281,14 +323,12 @@ function Home() {
 
             <p>
               Transformação das referências
-              em conceitos e mecânicas.
+              em mecânicas e narrativas.
             </p>
-
           </article>
 
 
           <article>
-
             <span>03</span>
 
             <h3>
@@ -296,15 +336,13 @@ function Home() {
             </h3>
 
             <p>
-              Produção e testes de
-              componentes e regras.
+              Desenvolvimento de tabuleiros,
+              cartas, peças e regras.
             </p>
-
           </article>
 
 
           <article>
-
             <span>04</span>
 
             <h3>
@@ -313,9 +351,8 @@ function Home() {
 
             <p>
               Experiências com estudantes,
-              escolas e comunidades.
+              escolas e comunidade.
             </p>
-
           </article>
 
         </div>
@@ -323,8 +360,11 @@ function Home() {
       </section>
 
 
-      {/* CHAMADA FINAL */}
-      <section className="home-final">
+      {/* =================================================
+          CHAMADA FINAL
+      ================================================= */}
+
+      <section className="home-cta">
 
         <span>
           CULTURA • EDUCAÇÃO • JOGOS
@@ -336,7 +376,8 @@ function Home() {
         </h2>
 
         <a href="#jogos">
-          Explore os jogos →
+          Explore os jogos
+          <strong>→</strong>
         </a>
 
       </section>
@@ -345,42 +386,4 @@ function Home() {
   )
 }
 
-
-function App() {
-  return (
-    <BrowserRouter>
-
-      <Navbar />
-
-      <Routes>
-
-        <Route
-          path="/"
-          element={<Home />}
-        />
-
-        <Route
-          path="/PassagemDasPedras"
-          element={<PassagemDasPedras />}
-        />
-
-        <Route
-          path="/GuardioesDaMemoria"
-          element={<GuardioesDaMemoria />}
-        />
-
-        <Route
-          path="/ALendaDaCascavel"
-          element={<ALendaDaCascavel />}
-        />
-
-      </Routes>
-
-      <Footer />
-
-    </BrowserRouter>
-  )
-}
-
-
-export default App
+export default Home

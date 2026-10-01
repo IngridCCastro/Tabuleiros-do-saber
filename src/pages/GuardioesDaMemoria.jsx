@@ -1,11 +1,13 @@
-import Hero from '../sections/Aracati/Hero.jsx';
-import Details from '../sections/Aracati/Details.jsx';
+import Hero from '../sections/Aracati/Hero'
+import Details from '../sections/Aracati/Details'
 
-export default function PassagemDasPedras() {
+function GuardioesDaMemoria() {
   return (
-    <>
+    <main className="game-page">
       <Hero />
       <Details />
-    </>
-  );
+    </main>
+  )
 }
+
+export default GuardioesDaMemoria
